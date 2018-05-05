@@ -50,15 +50,5 @@ class Pixame{
 	    throw new Exceptions\PixameException($exception->getMessage(),$exception->getCode());
     }
    }
-   public function NextPage(){
 
-   	try{
-
-
-
-    }catch (GuzzleHttp\Exception\ClientException $exception){
-	    throw new Exceptions\PixameException($exception->getMessage(),$exception->getCode());
-    }
-
-   }
 }
