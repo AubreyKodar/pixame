@@ -28,8 +28,26 @@ class Pixame{
     }catch (GuzzleHttp\Exception\ClientException $exception){
 
    		throw new Exceptions\PixameException($exception->getMessage(),$exception->getCode());
-
     }
 
+   }
+   public function DownloadImage($publicUrl, $filename, $storagePath){
+
+   	try{
+
+	    $resource = fopen($storagePath.$filename, 'w');
+   		$resp = $this->httpClient->get($publicUrl,['sink' => $resource]);
+	    fclose($resource);
+
+   		if($resp->getStatusCode() == 200){
+			return $storagePath.$filename;
+	    }else{
+		    throw new Exceptions\PixameException($resp->getReasonPhrase(),$resp->getStatusCode());
+	    }
+
+
+    }catch (GuzzleHttp\Exception\ClientException $exception){
+	    throw new Exceptions\PixameException($exception->getMessage(),$exception->getCode());
+    }
    }
 }
