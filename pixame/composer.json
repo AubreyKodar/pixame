@@ -1,0 +1,24 @@
+{
+    "name": "aubreykodar/pixame",
+    "description": "Pixabay php client.",
+    "keywords": ["pixabay", "image", "package"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aubrey Kodar",
+            "email": "Hlungwaneak@protonmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": ">=5.4"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "5.2.*"
+    },
+	"autoload": {
+        "psr-4": {
+            "AubreyKodar\\pixame\\": "src/"
+        }
+    }
+}
