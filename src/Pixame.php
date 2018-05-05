@@ -1,7 +1,8 @@
-<?php namespace AubreyKodar\pixame;
+<?php namespace AubreyKodar\Pixame;
 use GuzzleHttp;
+use AubreyKodar\Pixame\Exceptions;
 
-class pixame{
+class Pixame{
 
 	private $key;
 	private $baseUrl = 'https://pixabay.com/api/';
@@ -11,19 +12,22 @@ class pixame{
 		$this->key = $key;
 		$this->httpClient = new GuzzleHttp\Client();
    }
-   public function Search($keyword, $type = 'photo'){
+   public function Search($keyword, $ReturnArray = false,$type = 'photo'){
 
    	try{
 
    		$resp =  $this->httpClient->get($this->baseUrl.'?key='.$this->key.'&q='.urlencode($keyword).'&image_type='.$type);
 
 	    if($resp->getStatusCode() == 200){
-	    	return GuzzleHttp\json_decode($resp->getBody());
-	    }else{
+	    	return GuzzleHttp\json_decode($resp->getBody(), $ReturnArray);
 
+	    }else{
+		    throw new Exceptions\PixameException($resp->getReasonPhrase(),$resp->getStatusCode());
 	    }
 
     }catch (GuzzleHttp\Exception\ClientException $exception){
+
+   		throw new Exceptions\PixameException($exception->getMessage(),$exception->getCode());
 
     }
 

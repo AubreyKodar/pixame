@@ -7,9 +7,9 @@
  */
 
 require 'vendor/autoload.php';
-use AubreyKodar\pixame\pixame;
+use AubreyKodar\Pixame\Pixame;
 
-$px = new pixame('8742650-e8c751eacf5113912547d9aa9');
+$px = new Pixame('8742650-e8c751eacf5113912547d9aa9');
 echo "<pre>";
-var_dump($px->Search('yellow flowers'));
+var_dump($px->Search('yellow flowers',false));
 echo "</pre>";
