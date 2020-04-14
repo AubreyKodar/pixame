@@ -1,8 +1,12 @@
-<?php namespace AubreyKodar\Pixame;
+<?php
+
+namespace AubreyKodar\Pixame;
+
 use GuzzleHttp;
 use AubreyKodar\Pixame\Exceptions;
 
-class Pixame{
+class Pixame
+{
 
 	private $key;
 	private $baseUrl = 'https://pixabay.com/api/';
@@ -50,5 +54,4 @@ class Pixame{
 	    throw new Exceptions\PixameException($exception->getMessage(),$exception->getCode());
     }
    }
-
 }
